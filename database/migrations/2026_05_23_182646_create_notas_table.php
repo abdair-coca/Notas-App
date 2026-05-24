@@ -10,16 +10,22 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('notas', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo');
-            $table->text('contenido');
-            $table->string('categoria')->nullable();
-            $table->boolean('fijada')->default(false);
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('notas', function (Blueprint $table) {
+        $table->id();
+
+        $table->string('titulo', 120);
+
+        $table->text('contenido');
+
+        $table->string('categoria', 40);
+
+        $table->boolean('fijada')
+              ->default(false);
+
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.

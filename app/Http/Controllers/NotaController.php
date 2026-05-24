@@ -2,64 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nota;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreNotaRequest;
+use App\Models\Nota;
 
 class NotaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $notas = Nota::orderByDesc('fijada')
+            ->latest()
+            ->get();
+        return view('notas.index', compact('notas'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('notas.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(StoreNotaRequest $request)
     {
-        //
+        Nota::create($request->validated());
+        return redirect()->route('notas.index')->with('success', 'Nota creada exitosamente.');
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Nota $nota)
     {
-        //
+        return view('notas.show', compact('nota'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Nota $nota)
     {
-        //
+        return view('notas.edit', compact('nota'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Nota $nota)
+    public function update(StoreNotaRequest $request, Nota $nota)
     {
-        //
+        $nota->update($request->validated());
+        return redirect()->route('notas.index')->with('success', 'Nota actualizada exitosamente.');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Nota $nota)
     {
-        //
+        $nota->delete();
+        return redirect()->route('notas.index')->with('success', 'Nota eliminada exitosamente.');
+    }
+    public function toggleFijada(Nota $nota)
+    {
+        $nota->fijada = !$nota->fijada;
+        $nota->save();
+        return redirect()->route('notas.index')->with('success', 'Estado de fijada actualizado exitosamente.');
     }
 }
