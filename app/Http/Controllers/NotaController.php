@@ -8,11 +8,23 @@ use App\Models\Nota;
 
 class NotaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $notas = Nota::orderByDesc('fijada')
+        $search = $request->search;
+
+        $notas = Nota::query()
+
+            ->when($search, function ($query, $search) {
+
+                $query->where('titulo', 'ILIKE', "%{$search}%")
+                    ->orWhere('contenido', 'ILIKE', "%{$search}%")
+                    ->orWhere('categoria', 'ILIKE', "%{$search}%");
+            })
+
+            ->orderByDesc('fijada')
             ->latest()
             ->get();
+
         return view('notas.index', compact('notas'));
     }
     public function create()
@@ -47,5 +59,13 @@ class NotaController extends Controller
         $nota->fijada = !$nota->fijada;
         $nota->save();
         return redirect()->route('notas.index')->with('success', 'Estado de fijada actualizado exitosamente.');
+    }
+    public function categoria($categoria)
+    {
+        $notas = Nota::where('categoria', $categoria)
+            ->latest()
+            ->get();
+
+        return view('notas.index', compact('notas'));
     }
 }

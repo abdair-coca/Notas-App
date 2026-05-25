@@ -4,41 +4,106 @@
 
 @section('content')
 
-{{-- ===== Welcome banner ===== --}}
-<section
-    class="bg-brand-blue border-[3px] border-brand-dark rounded-[20px] p-7 mb-7 flex items-center justify-between shadow-neo relative overflow-hidden">
-    <div class="absolute -right-5 -bottom-5 w-32 h-32 bg-white/15 rounded-full pointer-events-none"></div>
-    <div class="absolute right-20 top-4 w-12 h-12 bg-white/10 rounded-full pointer-events-none"></div>
+{{-- ===== Tab bar ===== --}}
+<nav class="flex items-center justify-center gap-8 border-b-2 border-[#1C1C1C] mb-8 -mx-4 md:-mx-6 px-6">
+    <a href="{{ route('notas.index') }}"
+        id="tab-todas"
+        class="font-display font-bold text-[13px] text-[#888] py-3 border-b-[3px] border-transparent hover:text-[#3B82F6] transition-colors">
+        Todas
+    </a>
+    <a href="{{ route('notas.categoria', 'Personal') }}"
+        id="tab-personal"
+        class="font-display font-bold text-[13px] text-[#888] py-3 border-b-[3px] border-transparent hover:text-[#3B82F6] transition-colors">
+        Personal
+    </a>
+    <a href="{{ route('notas.categoria', 'Trabajo') }}"
+        id="tab-trabajo"
+        class="font-display font-bold text-[13px] text-[#888] py-3 border-b-[3px] border-transparent hover:text-[#3B82F6] transition-colors">
+        Trabajo
+    </a>
+    <a href="{{ route('notas.categoria', 'Estudio') }}"
+        id="tab-estudio"
+        class="font-display font-bold text-[13px] text-[#888] py-3 border-b-[3px] border-transparent hover:text-[#3B82F6] transition-colors">
+        Estudio
+    </a>
+    <a href="{{ route('notas.categoria', 'Ideas') }}"
+        id="tab-ideas"
+        class="font-display font-bold text-[13px] text-[#888] py-3 border-b-[3px] border-transparent hover:text-[#3B82F6] transition-colors">
+        Ideas
+    </a>
+</nav>
 
-    <div class="relative">
-        <h1 class="font-fredoka text-3xl md:text-4xl text-white [text-shadow:2px_2px_0_rgba(0,0,0,0.15)]">
-            ¡Hola, Maravilloso Lector! 👋
-        </h1>
-        <p class="text-white/90 font-bold text-sm md:text-base mt-2">
-            Explora nuestro catálogo y encuentra tu próxima aventura.
-        </p>
-    </div>
-    <span class="text-6xl md:text-7xl relative">🦉</span>
-</section>
+{{-- ===== Page header (título + subtítulo + búsqueda) ===== --}}
+<header class="flex flex-col items-center text-center gap-3 mb-8">
+    <h1 class="font-display font-extrabold text-3xl md:text-[32px] text-[#1C1C1C]">
+        Tus Notas
+    </h1>
+    <p class="font-nunito font-semibold text-sm text-[#888]">
+        Aquí están todas tus ideas organizadas. ¡Haz algo increíble!
+    </p>
 
-{{-- ===== Header del catálogo ===== --}}
-<header class="flex flex-wrap items-end justify-between gap-3 mb-6">
-    <div>
-        <h2 class="font-fredoka text-2xl md:text-3xl text-brand-dark flex items-center gap-2">
-            📚 Catálogo de Notas
-        </h2>
-        <p class="font-extrabold text-xs text-brand-dark/60 mt-1 uppercase tracking-wider">
-            Todas las notas disponibles
-        </p>
-    </div>
+    <form
+        action="{{ route('notas.index') }}"
+        method="GET"
+        class="flex items-center gap-2 bg-white border-[2.5px] border-[#1C1C1C] rounded-full px-4 py-1.5 shadow-[4px_4px_0px_#1C1C1C] w-[260px] transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[6px_6px_0px_#1C1C1C]">
 
+        <button
+            type="submit"
+            class="text-base hover:scale-110 transition-transform shrink-0">
+            🔍
+        </button>
+
+        <input
+            id="search-input"
+            type="text"
+            name="search"
+            value="{{ request('search') }}"
+            placeholder="Buscar notas..."
+            class="flex-1 min-w-0 font-nunito text-sm font-medium text-[#1C1C1C] placeholder:text-[#888]"
+            style="background:transparent !important; border:0 !important; padding:0 !important; border-radius:0 !important; box-shadow:none !important; outline:none !important; height:auto !important;">
+
+        @if(request('search'))
+        <a
+            href="{{ route('notas.index') }}"
+            class="shrink-0 text-[10px] font-display font-extrabold bg-[#FFE4F0] w-5 h-5 inline-flex items-center justify-center rounded-full border-2 border-[#1C1C1C] hover:scale-110 transition">
+            ✕
+        </a>
+        @endif
+    </form>
 </header>
 
-{{-- ===== Grid de notas ===== --}}
+{{-- ===== Grid de notas / Estado vacío ===== --}}
+@if($notas->isEmpty())
+<div class="mt-6 flex flex-col items-center justify-center bg-white border-[2.5px] border-[#1C1C1C] rounded-[20px] p-10 shadow-brutal max-w-md mx-auto text-center">
+    <div class="text-6xl animate-bounce">😿</div>
+    <h2 class="mt-4 font-display font-extrabold text-2xl text-[#1C1C1C]">
+        No se encontraron notas
+    </h2>
+    <p class="mt-2 font-nunito font-semibold text-sm text-[#888]">
+        @if(request('search'))
+            No hay coincidencias para "<span class="font-bold text-[#1C1C1C]">{{ request('search') }}</span>". Intenta con otro término.
+        @else
+            Aún no tienes notas. ¡Crea la primera!
+        @endif
+    </p>
+    @if(request('search'))
+    <a href="{{ route('notas.index') }}"
+        class="mt-5 font-display font-extrabold text-sm px-5 py-2 rounded-full border-[2.5px] border-[#1C1C1C] shadow-brutal-sm bg-[#FFD166] text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
+        ✕ Limpiar búsqueda
+    </a>
+    @else
+    <a href="{{ route('notas.create') }}"
+        class="mt-5 font-display font-extrabold text-sm px-5 py-2 rounded-full border-[2.5px] border-[#1C1C1C] shadow-brutal-sm bg-[#FFD166] text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
+        ➕ Crear nota
+    </a>
+    @endif
+</div>
+@else
 <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     @foreach($notas as $nota)
     <x-nota-card :nota="$nota" />
     @endforeach
 </section>
+@endif
 
 @endsection
