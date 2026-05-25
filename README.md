@@ -1,58 +1,314 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📝 Notas App — CRUD de Apuntes con Laravel 13
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="/public/images/banner.svg" alt="Notas App Banner" width="100%">
 </p>
 
-## About Laravel
+<p align="center">
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.5-blue?style=for-the-badge&logo=php)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue?style=for-the-badge&logo=postgresql)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8?style=for-the-badge&logo=tailwindcss)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+# 📚 Descripción del Proyecto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Notas App** es una aplicación web desarrollada con Laravel 13 que permite gestionar apuntes y recordatorios personales mediante operaciones CRUD completas.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+La aplicación fue desarrollada como parte de la materia:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+> **INF560 — Desarrollo Web Backend**  
+> Universidad Autónoma Tomás Frías
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+# 📸 Capturas del Proyecto
 
-```bash
-composer require laravel/boost --dev
+## 🏠 Vista Principal
 
-php artisan boost:install
+
+![Home](/public/images/home.png)
+
+
+---
+
+## 📝 Mostrar Nota
+
+
+![Create](/public/images/show.png)
+
+
+---
+
+## ➕ Crear Nota
+
+
+![Create](/public/images/create.png)
+
+
+---
+
+## ✏️ Editar Nota
+
+
+![Edit](/public/images/edit.png)
+
+
+---
+
+## 🔍 Buscador
+
+
+![Search](/public/images/search.png)
+
+
+---
+
+## ⚠️ Validaciones
+
+
+![Validation](/public/images/validation.png)
+
+
+---
+
+# ✨ Características Principales
+
+✅ Crear notas  
+✅ Editar notas  
+✅ Eliminar notas  
+✅ Ver detalles de notas  
+✅ Fijar / desfijar notas importantes  
+✅ Buscador dinámico  
+✅ Validación del lado del servidor  
+✅ Mensajes flash interactivos  
+✅ Diseño moderno con TailwindCSS  
+✅ Mascota interactiva 🐱  
+✅ Factory y Seeder para datos de prueba  
+✅ Arquitectura MVC con Laravel
+
+---
+
+# 🧠 Tecnologías Utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| Laravel 13 | Framework backend |
+| PHP 8.5 | Lenguaje principal |
+| PostgreSQL | Base de datos |
+| TailwindCSS | Estilos y diseño |
+| Blade | Motor de plantillas |
+| Git y GitHub | Control de versiones |
+
+---
+
+# 🏗️ Arquitectura del Proyecto
+
+```txt
+notas-app
+│
+├── app
+│   ├── Http
+│   │   ├── Controllers
+│   │   └── Requests
+│   └── Models
+│
+├── database
+│   ├── factories
+│   ├── migrations
+│   └── seeders
+│
+├── resources
+│   └── views
+│       ├── layouts
+│       └── notas
+│
+├── routes
+│
+└── public
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+# 🗄️ Modelo de Base de Datos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```txt
+┌─────────────────────────┐
+│         notas           │
+├─────────────────────────┤
+│ id            BIGINT PK │
+│ titulo        VARCHAR   │
+│ contenido     TEXT      │
+│ categoria     VARCHAR   │
+│ fijada        BOOLEAN   │
+│ created_at    TIMESTAMP │
+│ updated_at    TIMESTAMP │
+└─────────────────────────┘
+```
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 🚀 Instalación del Proyecto
 
-## Security Vulnerabilities
+## 1️⃣ Clonar el repositorio
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+git clone https://github.com/TU-USUARIO/notas-app.git
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 2️⃣ Entrar al proyecto
+
+```bash
+cd notas-app
+```
+
+---
+
+## 3️⃣ Instalar dependencias
+
+```bash
+composer install
+```
+
+---
+
+## 4️⃣ Configurar variables de entorno
+
+```bash
+cp .env.example .env
+```
+
+---
+
+## 5️⃣ Generar clave de aplicación
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## 6️⃣ Configurar la base de datos
+
+Editar el archivo `.env`
+
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=notas_app
+DB_USERNAME=postgres
+DB_PASSWORD=tu_password
+```
+
+---
+
+## 7️⃣ Ejecutar migraciones y seeders
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+---
+
+## 8️⃣ Iniciar servidor
+
+```bash
+php artisan serve
+```
+
+---
+
+
+# 🔥 Funcionalidades Destacadas
+
+## 📌 Sistema de Notas Fijadas
+
+Las notas importantes pueden fijarse para aparecer primero en la lista principal.
+
+---
+
+## 🔎 Buscador Inteligente
+
+El sistema permite buscar notas por:
+
+- título
+- contenido
+- categoría
+
+---
+
+## 🐱 Mascota Interactiva
+
+La aplicación incorpora una mascota virtual que mejora la experiencia del usuario mediante mensajes dinámicos e interacción visual.
+
+---
+
+# 🧪 Datos de Prueba
+
+La aplicación utiliza:
+
+- Factories
+- Seeders
+
+para generar notas automáticamente y facilitar pruebas del sistema.
+
+---
+
+# 🛡️ Validaciones Implementadas
+
+✔️ Título obligatorio  
+✔️ Máximo 120 caracteres  
+✔️ Categorías válidas  
+✔️ Validación backend  
+✔️ Protección CSRF  
+✔️ Confirmación antes de eliminar
+
+---
+
+# 📌 Rutas Principales
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `/notas` | Listar notas |
+| GET | `/notas/create` | Crear nota |
+| POST | `/notas` | Guardar nota |
+| GET | `/notas/{nota}` | Ver detalle |
+| GET | `/notas/{nota}/edit` | Editar nota |
+| PUT | `/notas/{nota}` | Actualizar nota |
+| DELETE | `/notas/{nota}` | Eliminar nota |
+
+---
+
+# 👨‍💻 Autor
+
+**Abdair Coca**  
+Estudiante de Ingeniería Informática — UATF
+
+---
+
+# 📖 Aprendizajes Obtenidos
+
+Durante el desarrollo de este proyecto se fortalecieron conocimientos sobre:
+
+- Arquitectura MVC
+- CRUD completo
+- Laravel 13
+- Eloquent ORM
+- Validaciones
+- Blade Templates
+- TailwindCSS
+- PostgreSQL
+- Buenas prácticas backend
+
+---
+
+# ⭐ Conclusión
+
+Este proyecto permitió implementar una aplicación web funcional aplicando correctamente el patrón CRUD mediante Laravel, reforzando conceptos fundamentales del desarrollo backend moderno y mejorando la experiencia de usuario mediante una interfaz moderna e interactiva.
