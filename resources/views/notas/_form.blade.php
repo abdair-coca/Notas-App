@@ -53,9 +53,8 @@
                 {{ $activa ? 'checked' : '' }}
                 class="peer sr-only">
             <span
-                class="inline-flex items-center gap-1.5 px-4 py-1.5 font-display font-bold text-xs border-[2.5px] border-[#1C1C1C] rounded-full transition-all hover:-translate-y-0.5
-                       {{ $activa ? 'shadow-[3px_3px_0_#1C1C1C] -translate-y-0.5' : 'shadow-none' }}"
-                style="background-color: {{ $activa ? $meta['bg'] : '#FFFFFF' }}; color: #1C1C1C;">
+                class="inline-flex items-center gap-1.5 px-4 py-1.5 font-display font-bold text-xs border-[2.5px] border-[#1C1C1C] rounded-full transition-all hover:-translate-y-0.5 bg-white shadow-none peer-checked:shadow-[3px_3px_0_#1C1C1C] peer-checked:-translate-y-0.5 peer-checked:bg-[var(--cat-bg)]"
+                style="--cat-bg: {{ $meta['bg'] }}; color: #1C1C1C;">
                 <span class="text-sm leading-none">{{ $meta['emoji'] }}</span>
                 {{ $nombre }}
             </span>

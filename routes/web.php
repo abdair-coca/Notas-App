@@ -20,21 +20,11 @@ Route::get(
 
 use Illuminate\Support\Facades\Artisan;
 
-// 👇 PEGA EL CÓDIGO AQUÍ AL FINAL 👇
-Route::get('/correr-migraciones', function () {
-    try {
-        Artisan::call('migrate', ['--force' => true]);
+Route::get('/llenar', function () {
+    try {// Ejecutamos el seeder principal (DatabaseSeeder)
+        Artisan::call('db:seed', ['--force' => true]);
         
-        return "¡Migraciones ejecutadas con éxito! 😎 Ya puedes ir al inicio.";
-    } catch (\Exception $e) {
-        return "Error: " . $e->getMessage();
-    }
-});
-
-Route::get('/limpiar-cache', function () {
-    try {
-        Artisan::call('optimize:clear');
-        return "¡Caché de Laravel limpiada al 100%! 🧹 Ya puedes probar tu app.";
+        return "¡Datos de prueba generados con éxito! 🚀 Ya puedes verlos en tu app.";
     } catch (\Exception $e) {
         return "Error: " . $e->getMessage();
     }
