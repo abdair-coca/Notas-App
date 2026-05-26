@@ -191,26 +191,29 @@
     <div class="fixed bottom-20 left-16 pointer-events-none text-lg text-[#1C1C1C] opacity-35 animate-star-float select-none z-0" style="animation-delay: 2s;">★</div>
     <div class="fixed bottom-40 right-20 pointer-events-none text-xl text-[#1C1C1C] opacity-35 animate-star-float select-none z-0" style="animation-delay: 0.5s;">✦</div>
 
-    <nav class="bg-[#3B82F6] border-b-[3.5px] border-[#1C1C1C] px-6 md:px-8 py-3 sticky top-0 z-50 h-[62px] flex items-center justify-between shadow-brutal-sm">
-        <div class="flex items-center justify-between w-full flex-wrap gap-3">
+    <nav class="bg-[#3B82F6] border-b-[3.5px] border-[#1C1C1C] px-4 sm:px-6 md:px-8 py-2.5 md:py-3 sticky top-0 z-50 min-h-[62px] flex items-center shadow-brutal-sm">
+        <div class="flex items-center justify-between w-full gap-2 sm:gap-3">
             <a href="{{ route('notas.index') }}"
-                class="flex items-center gap-3 hover:rotate-[-2deg] transition-transform duration-150">
+                class="flex items-center gap-2 sm:gap-3 hover:rotate-[-2deg] transition-transform duration-150 shrink min-w-0">
                 <!-- Icon block 34x34 px -->
-                <div class="w-[34px] h-[34px] bg-[#FFD166] border-2 border-[#1C1C1C] rounded-[10px] flex items-center justify-center font-display font-extrabold text-lg text-[#1C1C1C]">N</div>
+                <div class="w-[34px] h-[34px] shrink-0 bg-[#FFD166] border-2 border-[#1C1C1C] rounded-[10px] flex items-center justify-center font-display font-extrabold text-lg text-[#1C1C1C]">N</div>
                 <!-- Logo text: Baloo 2, 24px/800, color #FFF8ED -->
-                <span class="font-display font-extrabold text-2xl text-[#FFF8ED]">NotasApp</span>
+                <span class="font-display font-extrabold text-xl sm:text-2xl text-[#FFF8ED] truncate">NotasApp</span>
                 <!-- Decorative dot: 10x10 px -->
-                <div class="w-2.5 h-2.5 bg-[#FFD166] rounded-full border-2 border-[#1C1C1C]"></div>
+                <div class="hidden sm:block w-2.5 h-2.5 shrink-0 bg-[#FFD166] rounded-full border-2 border-[#1C1C1C]"></div>
             </a>
 
-            <div class="flex items-center gap-2 flex-wrap">
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <a href="{{ route('notas.index') }}"
-                    class="font-display font-bold text-sm px-4 py-1.5 rounded-full border-2 border-[#1C1C1C] bg-[#FFF8ED] shadow-brutal-sm text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:shadow-brutal hover:bg-[#FFD166]">
-                    📖 Notas
+                    class="font-display font-bold text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-full border-2 border-[#1C1C1C] bg-[#FFF8ED] shadow-brutal-sm text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:shadow-brutal hover:bg-[#FFD166] inline-flex items-center gap-1">
+                    <span>📖</span>
+                    <span class="hidden sm:inline">Notas</span>
                 </a>
                 <a href="{{ route('notas.create') }}"
-                    class="font-display font-extrabold text-sm px-4 py-1.5 rounded-full border-2 border-[#1C1C1C] bg-[#FFD166] shadow-brutal-sm text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:shadow-brutal hover:bg-[#FFF8ED]">
-                    ➕ Nueva Nota
+                    class="font-display font-extrabold text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-full border-2 border-[#1C1C1C] bg-[#FFD166] shadow-brutal-sm text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:shadow-brutal hover:bg-[#FFF8ED] inline-flex items-center gap-1">
+                    <span>➕</span>
+                    <span class="hidden sm:inline">Nueva Nota</span>
+                    <span class="sm:hidden">Nueva</span>
                 </a>
             </div>
         </div>
