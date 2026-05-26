@@ -16,65 +16,65 @@
 <div class="max-w-6xl mx-auto">
 
     {{-- ===== Top bar ===== --}}
-    <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
+    <div class="mb-5 md:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <a href="{{ route('notas.index') }}"
-            class="font-display font-extrabold text-sm px-4 py-1.5 rounded-full border-[2.5px] border-[#1C1C1C] bg-white shadow-brutal-sm text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
+            class="self-start sm:self-auto font-display font-extrabold text-xs sm:text-sm px-4 py-1.5 rounded-full border-[2.5px] border-[#1C1C1C] bg-white shadow-brutal-sm text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
             ← Volver a notas
         </a>
 
         <div class="flex gap-2 flex-wrap">
             <a href="{{ route('notas.edit', $nota) }}"
-                class="font-display font-extrabold text-sm px-5 py-1.5 rounded-full border-[2.5px] border-[#1C1C1C] shadow-brutal-sm bg-[#FFD166] text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
+                class="flex-1 sm:flex-none justify-center font-display font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-1.5 rounded-full border-[2.5px] border-[#1C1C1C] shadow-brutal-sm bg-[#FFD166] text-[#1C1C1C] transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
                 ✏️ Editar
             </a>
             <button type="button"
                 onclick="openModal('delete-nota-form', 'delete-nota-modal')"
-                class="font-display font-extrabold text-sm px-5 py-1.5 rounded-full border-[2.5px] border-[#1C1C1C] shadow-brutal-sm bg-[#FF6B6B] text-white transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
+                class="flex-1 sm:flex-none justify-center font-display font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-1.5 rounded-full border-[2.5px] border-[#1C1C1C] shadow-brutal-sm bg-[#FF6B6B] text-white transition-all hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-brutal inline-flex items-center gap-1.5">
                 🗑️ Eliminar
             </button>
         </div>
     </div>
 
     {{-- ===== Layout: contenido + sidebar (design.md §6.3) ===== --}}
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-6 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-5 md:gap-6 items-start">
 
         {{-- ===== Contenido principal ===== --}}
         <article class="bg-white border-[2.5px] border-[#1C1C1C] rounded-[20px] shadow-brutal overflow-hidden relative">
             {{-- Barra de color de acento (§5.3) --}}
-            <div class="h-1.5 rounded-full mx-6 mt-5 opacity-60" style="background-color: {{ $cat['accent'] }};"></div>
+            <div class="h-1.5 rounded-full mx-5 sm:mx-6 mt-4 sm:mt-5 opacity-60" style="background-color: {{ $cat['accent'] }};"></div>
 
-            <div class="p-6 md:p-8">
-                <div class="flex items-start gap-3 mb-4 flex-wrap">
-                    <span class="text-3xl leading-none">{{ $cat['emoji'] }}</span>
-                    <h1 class="font-display font-extrabold text-3xl md:text-4xl text-[#1C1C1C] break-words leading-tight flex-1 min-w-0">
+            <div class="p-5 sm:p-6 md:p-8">
+                <div class="flex items-start gap-2.5 sm:gap-3 mb-3 sm:mb-4 flex-wrap">
+                    <span class="text-2xl sm:text-3xl leading-none">{{ $cat['emoji'] }}</span>
+                    <h1 class="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#1C1C1C] break-words leading-tight flex-1 min-w-0">
                         {{ $nota->titulo }}
                     </h1>
                 </div>
 
-                <div class="flex items-center gap-2 flex-wrap mb-6">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-0.5 font-display font-bold text-[11px] uppercase tracking-wide border-2 border-[#1C1C1C] rounded-full"
+                <div class="flex items-center gap-2 flex-wrap mb-5 sm:mb-6">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-0.5 font-display font-bold text-[10px] sm:text-[11px] uppercase tracking-wide border-2 border-[#1C1C1C] rounded-full"
                         style="background-color: {{ $cat['bg'] }};">
                         {{ $cat['emoji'] }} {{ $nota->categoria }}
                     </span>
 
                     @if($nota->fijada)
-                    <span class="inline-flex items-center gap-1 px-3 py-0.5 font-display font-bold text-[11px] uppercase tracking-wide border-2 border-[#1C1C1C] rounded-full bg-[#FEF9C3]">
+                    <span class="inline-flex items-center gap-1 px-3 py-0.5 font-display font-bold text-[10px] sm:text-[11px] uppercase tracking-wide border-2 border-[#1C1C1C] rounded-full bg-[#FEF9C3]">
                         📌 Fijada
                     </span>
                     @endif
                 </div>
 
-                <div class="font-nunito text-[15px] leading-[1.7] text-[#333] whitespace-pre-line break-words">
+                <div class="font-nunito text-sm sm:text-[15px] leading-[1.7] text-[#333] whitespace-pre-line break-words">
                     {!! nl2br(e($nota->contenido)) !!}
                 </div>
             </div>
         </article>
 
         {{-- ===== Sidebar (design.md §5.12) ===== --}}
-        <aside class="space-y-4">
+        <aside class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
 
             {{-- Acciones rápidas --}}
-            <div class="bg-white border-[2.5px] border-[#1C1C1C] rounded-2xl p-5 shadow-brutal-sm">
+            <div class="bg-white border-[2.5px] border-[#1C1C1C] rounded-2xl p-4 sm:p-5 shadow-brutal-sm">
                 <p class="font-display font-bold text-[11px] uppercase tracking-[1px] text-[#aaa] mb-3">
                     Acciones
                 </p>
@@ -89,7 +89,7 @@
             </div>
 
             {{-- Metadata --}}
-            <div class="bg-white border-[2.5px] border-[#1C1C1C] rounded-2xl p-5 shadow-brutal-sm space-y-4">
+            <div class="bg-white border-[2.5px] border-[#1C1C1C] rounded-2xl p-4 sm:p-5 shadow-brutal-sm space-y-3 sm:space-y-4">
                 <p class="font-display font-bold text-[11px] uppercase tracking-[1px] text-[#aaa]">
                     Detalles
                 </p>
@@ -126,7 +126,7 @@
             </div>
 
             {{-- Tip card --}}
-            <div class="bg-[#E0F2FE] border-[2.5px] border-[#1C1C1C] rounded-2xl p-4 shadow-brutal-sm flex items-start gap-2.5">
+            <div class="bg-[#E0F2FE] border-[2.5px] border-[#1C1C1C] rounded-2xl p-3 sm:p-4 shadow-brutal-sm flex items-start gap-2.5 sm:col-span-2 lg:col-span-1">
                 <span class="text-xl leading-none">✨</span>
                 <p class="font-nunito font-bold text-xs text-[#1C1C1C] leading-snug">
                     Las mejores ideas nacen cuando menos lo esperas. Vuelve aquí cuando quieras revisarla.
