@@ -30,3 +30,12 @@ Route::get('/correr-migraciones', function () {
         return "Error: " . $e->getMessage();
     }
 });
+
+Route::get('/limpiar-cache', function () {
+    try {
+        Artisan::call('optimize:clear');
+        return "¡Caché de Laravel limpiada al 100%! 🧹 Ya puedes probar tu app.";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
