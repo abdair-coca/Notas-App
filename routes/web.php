@@ -17,3 +17,16 @@ Route::get(
     '/notas/categoria/{categoria}',
     [NotaController::class, 'categoria']
 )->name('notas.categoria');
+
+use Illuminate\Support\Facades\Artisan;
+
+// 👇 PEGA EL CÓDIGO AQUÍ AL FINAL 👇
+Route::get('/correr-migraciones', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        
+        return "¡Migraciones ejecutadas con éxito! 😎 Ya puedes ir al inicio.";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
