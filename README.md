@@ -1,114 +1,105 @@
-# 📝 Notas App — CRUD de Apuntes con Laravel 13
+# 📝 Notas App — CRUD Inteligente de Notas con Laravel 13
 
 <p align="center">
-  <img src="/public/images/banner.svg" alt="Notas App Banner" width="100%">
+  <img src="./public/images/banner.svg" alt="Notas App Banner" width="100%">
 </p>
 
 <p align="center">
 
-![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge&logo=laravel)
-![PHP](https://img.shields.io/badge/PHP-8.5-blue?style=for-the-badge&logo=php)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue?style=for-the-badge&logo=postgresql)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8?style=for-the-badge&logo=tailwindcss)
+![Laravel](https://img.shields.io/badge/Laravel-13-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.5-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
 </p>
 
 ---
 
 <p align="center">
-  🌐 <strong><a href="https://notas-app-t7u2.onrender.com/">Notas App</a></strong>
+  🌐 <strong><a href="https://notas-app-t7u2.onrender.com/">Ver aplicación desplegada</a></strong>
 </p>
 
 ---
 
 # 📚 Descripción del Proyecto
 
-**Notas App** es una aplicación web desarrollada con Laravel 13 que permite gestionar apuntes y recordatorios personales mediante operaciones CRUD completas.
+**Notas App** es una aplicación web desarrollada con Laravel 13 que permite gestionar notas y recordatorios mediante operaciones CRUD completas, búsqueda dinámica y una interfaz moderna e interactiva.
 
-La aplicación fue desarrollada como parte de la materia:
+El proyecto fue desarrollado aplicando arquitectura MVC, validaciones backend y despliegue en producción utilizando Render y PostgreSQL.
 
 > **INF560 — Desarrollo Web Backend**  
 > Universidad Autónoma Tomás Frías
 
 ---
 
-# 📸 Capturas del Proyecto
+# ✨ Funcionalidades Principales
 
-## 🏠 Vista Principal
-
-
-![Home](/public/images/home.png)
-
+✅ CRUD completo de notas  
+✅ Crear, editar, visualizar y eliminar notas  
+✅ Sistema de notas fijadas 📌  
+✅ Buscador dinámico 🔍  
+✅ Validaciones con FormRequest  
+✅ Mensajes flash interactivos  
+✅ Interfaz moderna con TailwindCSS  
+✅ Mascota interactiva 🐱  
+✅ Factories y Seeders  
+✅ Arquitectura MVC  
+✅ Despliegue en producción con Docker + Render  
+✅ Base de datos PostgreSQL  
+✅ Responsive Design
 
 ---
 
-## 📝 Mostrar Nota
+# 📸 Capturas del Proyecto
 
+## 🏠 Página Principal
 
-![Create](/public/images/show.png)
+![Home](./public/images/home.png)
 
+---
+
+## 📝 Visualización de Nota
+
+![Show](./public/images/show.png)
 
 ---
 
 ## ➕ Crear Nota
 
-
-![Create](/public/images/create.png)
-
+![Create](./public/images/create.png)
 
 ---
 
 ## ✏️ Editar Nota
 
-
-![Edit](/public/images/edit.png)
-
+![Edit](./public/images/edit.png)
 
 ---
 
-## 🔍 Buscador
+## 🔍 Sistema de Búsqueda
 
-
-![Search](/public/images/search.png)
-
+![Search](./public/images/search.png)
 
 ---
 
-## ⚠️ Validaciones
+## ⚠️ Validaciones Backend
 
-
-![Validation](/public/images/validation.png)
-
-
----
-
-# ✨ Características Principales
-
-✅ Crear notas  
-✅ Editar notas  
-✅ Eliminar notas  
-✅ Ver detalles de notas  
-✅ Fijar / desfijar notas importantes  
-✅ Buscador dinámico  
-✅ Validación del lado del servidor  
-✅ Mensajes flash interactivos  
-✅ Diseño moderno con TailwindCSS  
-✅ Mascota interactiva 🐱  
-✅ Factory y Seeder para datos de prueba  
-✅ Arquitectura MVC con Laravel
+![Validation](./public/images/validation.png)
 
 ---
 
 # 🧠 Tecnologías Utilizadas
 
-| Tecnología | Uso |
+| Tecnología | Descripción |
 |---|---|
-| Laravel 13 | Framework backend |
-| PHP 8.5 | Lenguaje principal |
-| PostgreSQL | Base de datos |
-| TailwindCSS | Estilos y diseño |
+| Laravel 13 | Framework backend principal |
+| PHP 8.5 | Lenguaje de programación |
+| PostgreSQL | Sistema gestor de base de datos |
+| TailwindCSS | Framework CSS |
 | Blade | Motor de plantillas |
-| Git y GitHub | Control de versiones |
+| Docker | Contenerización del proyecto |
+| Render | Despliegue y hosting |
+| Git & GitHub | Control de versiones |
 
 ---
 
@@ -121,12 +112,16 @@ notas-app
 │   ├── Http
 │   │   ├── Controllers
 │   │   └── Requests
-│   └── Models
+│   ├── Models
+│   └── Providers
 │
 ├── database
 │   ├── factories
 │   ├── migrations
 │   └── seeders
+│
+├── public
+│   └── images
 │
 ├── resources
 │   └── views
@@ -135,7 +130,9 @@ notas-app
 │
 ├── routes
 │
-└── public
+├── Dockerfile
+│
+└── README.md
 ```
 
 ---
@@ -158,12 +155,82 @@ notas-app
 
 ---
 
+# 🔥 Funcionalidades Destacadas
+
+## 📌 Sistema de Notas Fijadas
+
+Las notas importantes pueden fijarse para mostrarse primero en la página principal.
+
+---
+
+## 🔍 Buscador Inteligente
+
+El sistema permite buscar notas mediante:
+
+- título
+- contenido
+- categoría
+
+---
+
+## 🐱 Mascota Interactiva
+
+La aplicación incorpora una mascota virtual que mejora la experiencia del usuario mediante interacción visual y mensajes dinámicos.
+
+---
+
+## ⚡ Validaciones Backend
+
+Las validaciones fueron implementadas usando:
+
+- FormRequest
+- Reglas personalizadas
+- Mensajes personalizados
+
+---
+
+# 🛡️ Validaciones Implementadas
+
+✔️ Título obligatorio  
+✔️ Máximo 120 caracteres  
+✔️ Validación de tipos de datos  
+✔️ Protección CSRF  
+✔️ Validaciones backend con Laravel  
+✔️ Sanitización de formularios
+
+---
+
+# 🧪 Datos de Prueba
+
+El proyecto utiliza:
+
+- Factories
+- Seeders
+
+para poblar automáticamente la base de datos y facilitar pruebas.
+
+---
+
+# 📌 Rutas Principales
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `/notas` | Listar notas |
+| GET | `/notas/create` | Formulario de creación |
+| POST | `/notas` | Guardar nota |
+| GET | `/notas/{nota}` | Ver nota |
+| GET | `/notas/{nota}/edit` | Editar nota |
+| PUT | `/notas/{nota}` | Actualizar nota |
+| DELETE | `/notas/{nota}` | Eliminar nota |
+
+---
+
 # 🚀 Instalación del Proyecto
 
-## 1️⃣ Clonar el repositorio
+## 1️⃣ Clonar repositorio
 
 ```bash
-git clone https://github.com/TU-USUARIO/notas-app.git
+git clone https://github.com/abdair-coca/Notas-App.git
 ```
 
 ---
@@ -171,7 +238,7 @@ git clone https://github.com/TU-USUARIO/notas-app.git
 ## 2️⃣ Entrar al proyecto
 
 ```bash
-cd notas-app
+cd Notas-App
 ```
 
 ---
@@ -180,11 +247,12 @@ cd notas-app
 
 ```bash
 composer install
+npm install
 ```
 
 ---
 
-## 4️⃣ Configurar variables de entorno
+## 4️⃣ Configurar entorno
 
 ```bash
 cp .env.example .env
@@ -192,7 +260,7 @@ cp .env.example .env
 
 ---
 
-## 5️⃣ Generar clave de aplicación
+## 5️⃣ Generar APP_KEY
 
 ```bash
 php artisan key:generate
@@ -200,9 +268,9 @@ php artisan key:generate
 
 ---
 
-## 6️⃣ Configurar la base de datos
+## 6️⃣ Configurar PostgreSQL
 
-Editar el archivo `.env`
+Editar `.env`
 
 ```env
 DB_CONNECTION=pgsql
@@ -223,7 +291,15 @@ php artisan migrate:fresh --seed
 
 ---
 
-## 8️⃣ Iniciar servidor
+## 8️⃣ Compilar assets
+
+```bash
+npm run build
+```
+
+---
+
+## 9️⃣ Iniciar servidor
 
 ```bash
 php artisan serve
@@ -231,71 +307,31 @@ php artisan serve
 
 ---
 
+# 🐳 Despliegue con Docker
 
-# 🔥 Funcionalidades Destacadas
+El proyecto fue desplegado utilizando Docker y Render.
 
-## 📌 Sistema de Notas Fijadas
+## Construir contenedor
 
-Las notas importantes pueden fijarse para aparecer primero en la lista principal.
-
----
-
-## 🔎 Buscador Inteligente
-
-El sistema permite buscar notas por:
-
-- título
-- contenido
-- categoría
+```bash
+docker build -t notas-app .
+```
 
 ---
 
-## 🐱 Mascota Interactiva
+## Ejecutar contenedor
 
-La aplicación incorpora una mascota virtual que mejora la experiencia del usuario mediante mensajes dinámicos e interacción visual.
-
----
-
-# 🧪 Datos de Prueba
-
-La aplicación utiliza:
-
-- Factories
-- Seeders
-
-para generar notas automáticamente y facilitar pruebas del sistema.
+```bash
+docker run -p 8000:8000 notas-app
+```
 
 ---
 
-# 🛡️ Validaciones Implementadas
+# 🌐 Producción
 
-✔️ Título obligatorio  
-✔️ Máximo 120 caracteres  
-✔️ Categorías válidas  
-✔️ Validación backend  
-✔️ Protección CSRF  
-✔️ Confirmación antes de eliminar
+Aplicación desplegada en:
 
----
-
-# 📌 Rutas Principales
-
-| Método | Ruta | Descripción |
-|---|---|---|
-| GET | `/notas` | Listar notas |
-| GET | `/notas/create` | Crear nota |
-| POST | `/notas` | Guardar nota |
-| GET | `/notas/{nota}` | Ver detalle |
-| GET | `/notas/{nota}/edit` | Editar nota |
-| PUT | `/notas/{nota}` | Actualizar nota |
-| DELETE | `/notas/{nota}` | Eliminar nota |
-
----
-
-# 👨‍💻 Autor
-
-**Abdair Coca**  
-Estudiante de Ingeniería Informática — UATF
+👉 https://notas-app-t7u2.onrender.com/
 
 ---
 
@@ -304,17 +340,28 @@ Estudiante de Ingeniería Informática — UATF
 Durante el desarrollo de este proyecto se fortalecieron conocimientos sobre:
 
 - Arquitectura MVC
-- CRUD completo
 - Laravel 13
 - Eloquent ORM
-- Validaciones
-- Blade Templates
-- TailwindCSS
+- Validaciones backend
 - PostgreSQL
+- TailwindCSS
+- Blade Templates
+- Docker
+- Render Deployment
+- Git y GitHub
 - Buenas prácticas backend
+
+---
+
+# 👨‍💻 Autor
+
+## Abdair Coca
+
+Estudiante de Ingeniería Informática  
+Universidad Autónoma Tomás Frías
 
 ---
 
 # ⭐ Conclusión
 
-Este proyecto permitió implementar una aplicación web funcional aplicando correctamente el patrón CRUD mediante Laravel, reforzando conceptos fundamentales del desarrollo backend moderno y mejorando la experiencia de usuario mediante una interfaz moderna e interactiva.
+Este proyecto permitió desarrollar una aplicación web completa utilizando tecnologías modernas del ecosistema PHP, aplicando correctamente el patrón MVC, despliegue en producción y buenas prácticas de desarrollo backend moderno.
